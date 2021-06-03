@@ -43,16 +43,17 @@ function App() {
                 handleSelectStart,
                 false
             );
-
-             return () => {
-                listRef?.current?.removeEventListener(
+        }
+        return () => {
+            if(listRef.current != null)
+            {
+                listRef.current.removeEventListener(
                     "selectstart",
                     handleSelectStart,
                     false
                 );
+            }
         };
-        }
-       
     }, [list]);
     const handleSelectItem = (e) => {
         const { value } = e.target;
@@ -156,6 +157,8 @@ function App() {
         setStatus(0);
         setTime({ ms: 0, s: 0, m: 0, h: 0 });
         setList([]);
+        setCheckboxlist([]);
+        setSelectedItems([]);
     };
 
     const resume = () => start();
