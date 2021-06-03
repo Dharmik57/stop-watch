@@ -43,14 +43,16 @@ function App() {
                 handleSelectStart,
                 false
             );
-        }
-        return () => {
-            listRef.current.removeEventListener(
-                "selectstart",
-                handleSelectStart,
-                false
-            );
+
+             return () => {
+                listRef?.current?.removeEventListener(
+                    "selectstart",
+                    handleSelectStart,
+                    false
+                );
         };
+        }
+       
     }, [list]);
     const handleSelectItem = (e) => {
         const { value } = e.target;
